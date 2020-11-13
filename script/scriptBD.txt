@@ -1,0 +1,51 @@
+CREATE TABLE IF NOT EXISTS "__EFMigrationsHistory" (
+    "MigrationId" TEXT NOT NULL CONSTRAINT "PK___EFMigrationsHistory" PRIMARY KEY,
+    "ProductVersion" TEXT NOT NULL
+);
+
+CREATE TABLE "Mercadorias" (
+    "Id" INTEGER NOT NULL CONSTRAINT "PK_Mercadorias" PRIMARY KEY AUTOINCREMENT,
+    "Nome" TEXT NOT NULL,
+    "Descricao" TEXT NULL,
+    "Tipo" TEXT NULL,
+    "Fabricante" TEXT NULL
+);
+
+CREATE TABLE "Movimentacoes" (
+    "Id" INTEGER NOT NULL CONSTRAINT "PK_Movimentacoes" PRIMARY KEY AUTOINCREMENT,
+    "DataHora" TEXT NOT NULL,
+    "MovimentacaoEntrada" INTEGER NOT NULL,
+    "Quantidade" INTEGER NOT NULL,
+    "Local" TEXT NULL,
+    "IdMercadoria" INTEGER NOT NULL,
+    CONSTRAINT "FK_Movimentacoes_Mercadorias_IdMercadoria" FOREIGN KEY ("IdMercadoria") REFERENCES "Mercadorias" ("Id") ON DELETE CASCADE
+);
+
+CREATE INDEX "IX_Movimentacoes_IdMercadoria" ON "Movimentacoes" ("IdMercadoria");
+
+INSERT INTO "__EFMigrationsHistory" ("MigrationId", "ProductVersion")
+VALUES ('20201110141042_InitialCreate', '3.1.9');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
