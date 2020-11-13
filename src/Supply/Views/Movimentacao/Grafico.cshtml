@@ -1,0 +1,29 @@
+﻿@model IEnumerable<Supply.Models.Movimentacao>
+
+@{
+    ViewData["Title"] = "Grafico";
+}
+
+<h1>Gráfico Mensal</h1>
+<h4>Ano de @TempData["grafico_ano"]</h4>
+
+<figure class="highcharts-figure">
+    <div id="container_entrada" class="container_entrada"></div>
+    <hr />
+    <div id="container_saida" class="container_saida"></div>
+    <p class="highcharts-description"></p>
+</figure>
+
+<div>
+    <a asp-action="Index"><< Voltar</a>
+</div>
+
+<script async type="text/javascript">
+    var v_ano = @TempData["grafico_ano"];
+    var v_series_entrada =  @Html.Raw(@TempData["grafico_series_entrada"]);
+    var v_series_saida =  @Html.Raw(@TempData["grafico_series_saida"]);
+</script>
+
+<script async type="text/javascript" src="~/js/grafico.js"></script>
+
+

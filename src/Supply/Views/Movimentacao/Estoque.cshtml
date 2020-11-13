@@ -1,0 +1,45 @@
+﻿@model IEnumerable<Supply.Models.Movimentacao>
+
+@{
+    ViewData["Title"] = "Estoque";
+}
+
+<h1>Estoque</h1>
+
+<p>Quantidade atual da mercadoria com as movimentações de entradas e saídas</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Mercadoria)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Mercadoria.Descricao)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Quantidade)
+            </th>
+
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Mercadoria.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Mercadoria.Descricao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Quantidade)
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+<div>
+    <a asp-action="Index"><< Voltar</a>
+</div>

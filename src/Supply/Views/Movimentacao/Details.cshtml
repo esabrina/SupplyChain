@@ -1,0 +1,54 @@
+﻿@model Supply.Models.Movimentacao
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Movimentação</h1>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-4">
+            @Html.DisplayNameFor(model => model.DataHora)
+        </dt>
+        <dd class = "col-sm-8">
+            @Html.DisplayFor(model => model.DataHora)
+        </dd>
+        <dt class = "col-sm-4">
+            @Html.DisplayNameFor(model => model.MovimentacaoEntrada)
+        </dt>
+        <dd class="col-sm-8">  
+            @if (@Model.MovimentacaoEntrada == true)
+            {
+                <span>Entrada</span>
+            }
+            else
+            {
+                <span>Saída</span>
+            }
+        </dd>
+        <dt class = "col-sm-4">
+            @Html.DisplayNameFor(model => model.Quantidade)
+        </dt>
+        <dd class = "col-sm-8">
+            @Html.DisplayFor(model => model.Quantidade)
+        </dd>
+        <dt class = "col-sm-4">
+            @Html.DisplayNameFor(model => model.Local)
+        </dt>
+        <dd class = "col-sm-8">
+            @Html.DisplayFor(model => model.Local)
+        </dd>
+        <dt class = "col-sm-4">
+            @Html.DisplayNameFor(model => model.Mercadoria)
+        </dt>
+        <dd class = "col-sm-8">
+            @Html.DisplayFor(model => model.Mercadoria.Nome)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Index"><< Voltar</a> |
+    <a asp-action="Edit" asp-route-id="@Model.Id">Editar</a>
+</div>

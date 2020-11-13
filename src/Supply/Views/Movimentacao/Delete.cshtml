@@ -1,0 +1,63 @@
+﻿@model Supply.Models.Movimentacao
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Excluir Movimentação</h1>
+
+<h3>Tem certeza que deseja remover esse registro?</h3>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-4">
+            @Html.DisplayNameFor(model => model.DataHora)
+        </dt>
+        <dd class = "col-sm-8">
+            @Html.DisplayFor(model => model.DataHora)
+        </dd>
+        <dt class = "col-sm-4">
+            @Html.DisplayNameFor(model => model.MovimentacaoEntrada)
+        </dt>
+        <dd class="col-sm-8">
+            @if (@Model.MovimentacaoEntrada == true)
+            {
+                <span>Entrada</span>
+            }
+            else
+            {
+                <span>Saída</span>
+            }
+        </dd>
+        <dt class = "col-sm-4">
+            @Html.DisplayNameFor(model => model.Quantidade)
+        </dt>
+        <dd class = "col-sm-8">
+            @Html.DisplayFor(model => model.Quantidade)
+        </dd>
+        <dt class = "col-sm-4">
+            @Html.DisplayNameFor(model => model.Local)
+        </dt>
+        <dd class = "col-sm-8">
+            @Html.DisplayFor(model => model.Local)
+        </dd>
+        <dt class = "col-sm-4">
+            @Html.DisplayNameFor(model => model.Mercadoria)
+        </dt>
+        <dd class = "col-sm-8">
+            @Html.DisplayFor(model => model.Mercadoria.Nome)
+        </dd class>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <div class="row">
+            <div class="col-sm-4">
+                <a asp-action="Index" class="alinha_texto "><< Voltar</a>
+            </div>
+            <div class="col-sm-8">
+                <input type="submit" value="Excluir" class="btn btn-danger" />
+            </div>
+        </div>
+    </form>
+</div>

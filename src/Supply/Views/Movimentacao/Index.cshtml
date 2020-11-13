@@ -1,0 +1,69 @@
+﻿@model IEnumerable<Supply.Models.Movimentacao>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Movimentações</h1>
+
+<p>
+    <a asp-action="Create">Nova Movimentação</a> - 
+    @Html.ActionLink("Gráfico Mensal", "Grafico", "Movimentacao", null, null) - 
+    @Html.ActionLink("Estoque", "Estoque", "Movimentacao", null, null)
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.DataHora)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MovimentacaoEntrada)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Quantidade)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Local)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Mercadoria)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataHora)
+            </td>
+            <td>
+                @if (item.MovimentacaoEntrada == true)
+                {
+                    <span>Entrada</span>
+                }
+                else
+                {
+                    <span>Saída</span>
+                }
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Quantidade)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Local)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Mercadoria.Nome)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Detalhes</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Excluir</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
